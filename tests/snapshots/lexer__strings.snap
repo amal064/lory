@@ -1,0 +1,28 @@
+---
+source: tests/lexer.rs
+expression: "tokens.collect::<Vec<_>>()"
+---
+[
+    Ok(
+        Token {
+            kind: String {
+                string: "",
+            },
+            span: Span {
+                start: 0,
+                end: 2,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: String {
+                string: "string",
+            },
+            span: Span {
+                start: 3,
+                end: 11,
+            },
+        },
+    ),
+]

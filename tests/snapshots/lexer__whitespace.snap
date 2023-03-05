@@ -1,0 +1,50 @@
+---
+source: tests/lexer.rs
+expression: "tokens.collect::<Vec<_>>()"
+---
+[
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "space",
+            },
+            span: Span {
+                start: 0,
+                end: 5,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "tabs",
+            },
+            span: Span {
+                start: 9,
+                end: 13,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "newlines",
+            },
+            span: Span {
+                start: 17,
+                end: 25,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "end",
+            },
+            span: Span {
+                start: 30,
+                end: 33,
+            },
+        },
+    ),
+]

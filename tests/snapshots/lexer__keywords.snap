@@ -1,0 +1,141 @@
+---
+source: tests/lexer.rs
+expression: "tokens.collect::<Vec<_>>()"
+---
+[
+    Ok(
+        Token {
+            kind: And,
+            span: Span {
+                start: 0,
+                end: 3,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Class,
+            span: Span {
+                start: 4,
+                end: 9,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Else,
+            span: Span {
+                start: 10,
+                end: 14,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: False,
+            span: Span {
+                start: 15,
+                end: 20,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: For,
+            span: Span {
+                start: 21,
+                end: 24,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Fun,
+            span: Span {
+                start: 25,
+                end: 28,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: If,
+            span: Span {
+                start: 29,
+                end: 31,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Nil,
+            span: Span {
+                start: 32,
+                end: 35,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Or,
+            span: Span {
+                start: 36,
+                end: 38,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Return,
+            span: Span {
+                start: 39,
+                end: 45,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Super,
+            span: Span {
+                start: 46,
+                end: 51,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: This,
+            span: Span {
+                start: 52,
+                end: 56,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: True,
+            span: Span {
+                start: 57,
+                end: 61,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Var,
+            span: Span {
+                start: 62,
+                end: 65,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: While,
+            span: Span {
+                start: 66,
+                end: 71,
+            },
+        },
+    ),
+]

@@ -1,0 +1,46 @@
+---
+source: tests/lexer.rs
+expression: "tokens.collect::<Vec<_>>()"
+---
+[
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "abcde",
+            },
+            span: Span {
+                start: 0,
+                end: 5,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Dot,
+            span: Span {
+                start: 5,
+                end: 6,
+            },
+        },
+    ),
+    Err(
+        UnexpectedCharacter,
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "s",
+            },
+            span: Span {
+                start: 7,
+                end: 8,
+            },
+        },
+    ),
+    Err(
+        UnexpectedCharacter,
+    ),
+    Err(
+        UnexpectedCharacter,
+    ),
+]

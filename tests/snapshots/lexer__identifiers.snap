@@ -1,0 +1,94 @@
+---
+source: tests/lexer.rs
+expression: "tokens.collect::<Vec<_>>()"
+---
+[
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "andy",
+            },
+            span: Span {
+                start: 0,
+                end: 4,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "formless",
+            },
+            span: Span {
+                start: 5,
+                end: 13,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "fo",
+            },
+            span: Span {
+                start: 14,
+                end: 16,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "_",
+            },
+            span: Span {
+                start: 17,
+                end: 18,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "_123",
+            },
+            span: Span {
+                start: 19,
+                end: 23,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "_abc",
+            },
+            span: Span {
+                start: 24,
+                end: 28,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "ab123",
+            },
+            span: Span {
+                start: 29,
+                end: 34,
+            },
+        },
+    ),
+    Ok(
+        Token {
+            kind: Identifier {
+                ident: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_",
+            },
+            span: Span {
+                start: 35,
+                end: 98,
+            },
+        },
+    ),
+]
