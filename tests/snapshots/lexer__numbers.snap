@@ -5,8 +5,10 @@ expression: "tokens.collect::<Vec<_>>()"
 [
     Ok(
         Token {
-            kind: Number(
-                123.0,
+            kind: Lit(
+                Number(
+                    123.0,
+                ),
             ),
             span: Span {
                 start: 0,
@@ -16,8 +18,10 @@ expression: "tokens.collect::<Vec<_>>()"
     ),
     Ok(
         Token {
-            kind: Number(
-                123.456,
+            kind: Lit(
+                Number(
+                    123.456,
+                ),
             ),
             span: Span {
                 start: 4,
@@ -36,8 +40,10 @@ expression: "tokens.collect::<Vec<_>>()"
     ),
     Ok(
         Token {
-            kind: Number(
-                456.0,
+            kind: Lit(
+                Number(
+                    456.0,
+                ),
             ),
             span: Span {
                 start: 13,
@@ -47,8 +53,10 @@ expression: "tokens.collect::<Vec<_>>()"
     ),
     Ok(
         Token {
-            kind: Number(
-                123.0,
+            kind: Lit(
+                Number(
+                    123.0,
+                ),
             ),
             span: Span {
                 start: 17,

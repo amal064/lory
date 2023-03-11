@@ -5,9 +5,11 @@ expression: "tokens.collect::<Vec<_>>()"
 [
     Ok(
         Token {
-            kind: String {
-                string: "",
-            },
+            kind: Lit(
+                String {
+                    string: "",
+                },
+            ),
             span: Span {
                 start: 0,
                 end: 2,
@@ -16,9 +18,11 @@ expression: "tokens.collect::<Vec<_>>()"
     ),
     Ok(
         Token {
-            kind: String {
-                string: "string",
-            },
+            kind: Lit(
+                String {
+                    string: "string",
+                },
+            ),
             span: Span {
                 start: 3,
                 end: 11,

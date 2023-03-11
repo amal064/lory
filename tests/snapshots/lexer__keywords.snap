@@ -32,7 +32,9 @@ expression: "tokens.collect::<Vec<_>>()"
     ),
     Ok(
         Token {
-            kind: False,
+            kind: Lit(
+                False,
+            ),
             span: Span {
                 start: 15,
                 end: 20,
@@ -68,7 +70,9 @@ expression: "tokens.collect::<Vec<_>>()"
     ),
     Ok(
         Token {
-            kind: Nil,
+            kind: Lit(
+                Nil,
+            ),
             span: Span {
                 start: 32,
                 end: 35,
@@ -113,7 +117,9 @@ expression: "tokens.collect::<Vec<_>>()"
     ),
     Ok(
         Token {
-            kind: True,
+            kind: Lit(
+                True,
+            ),
             span: Span {
                 start: 57,
                 end: 61,

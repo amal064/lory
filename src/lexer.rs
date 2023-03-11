@@ -3,7 +3,10 @@ use std::{iter, str::Chars};
 use phf::phf_map;
 use thiserror::Error;
 
-use crate::{ast::TokenKind, span::Span};
+use crate::{
+    ast::{Literal, TokenKind},
+    span::Span,
+};
 
 #[derive(Debug)]
 #[non_exhaustive]
@@ -130,9 +133,9 @@ impl<'src> Lexer<'src> {
                     if !terminated {
                         return Err(Error::UnterminatedString { pos: start });
                     }
-                    TokenKind::String {
+                    TokenKind::Lit(Literal::String {
                         string: self.src[start + 1..self.pos() - 1].to_string(),
-                    }
+                    })
                 }
                 c if c.is_ascii_digit() => {
                     let mut has_dot = false;
@@ -155,7 +158,7 @@ impl<'src> Lexer<'src> {
                         self.advance();
                     }
                     let num = self.src[start..self.pos()].parse().unwrap();
-                    TokenKind::Number(num)
+                    TokenKind::Lit(Literal::Number(num))
                 }
                 c if c.is_ascii_alphabetic() || c == '_' => {
                     while let Some(c) = self.first() {
@@ -203,17 +206,17 @@ static KEYWORDS: phf::Map<&'static str, TokenKind> = phf_map! {
     "and" => TokenKind::And,
     "class" => TokenKind::Class,
     "else" => TokenKind::Else,
-    "false" => TokenKind::False,
+    "false" => TokenKind::Lit(Literal::False),
     "for" => TokenKind::For,
     "fun" => TokenKind::Fun,
     "if" => TokenKind::If,
-    "nil" => TokenKind::Nil,
+    "nil" => TokenKind::Lit(Literal::Nil),
     "or" => TokenKind::Or,
     "print" => TokenKind::Print,
     "return" => TokenKind::Return,
     "super" => TokenKind::Super,
     "this" => TokenKind::This,
-    "true" => TokenKind::True,
+    "true" => TokenKind::Lit(Literal::True),
     "var" => TokenKind::Var,
     "while" => TokenKind::While,
 };

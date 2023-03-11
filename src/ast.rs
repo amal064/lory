@@ -25,27 +25,33 @@ pub enum TokenKind {
     LessEqual,
 
     // Literals
+    Lit(Literal),
+
     Identifier { ident: String },
-    String { string: String },
-    Number(f64),
 
     // Keywords
     And,
     Class,
     Else,
-    False,
     Fun,
     For,
     If,
-    Nil,
     Or,
     Print,
     Return,
     Super,
     This,
-    True,
     Var,
     While,
 
     Eof,
+}
+
+#[derive(Debug, Clone)]
+pub enum Literal {
+    True,
+    False,
+    Nil,
+    String { string: String },
+    Number(f64),
 }
