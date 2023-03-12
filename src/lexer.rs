@@ -8,7 +8,7 @@ use crate::{
     span::Span,
 };
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 #[non_exhaustive]
 pub struct Token {
     pub kind: TokenKind,
@@ -20,7 +20,7 @@ pub struct Lexer<'src> {
     chars: Chars<'src>,
 }
 
-#[derive(Debug, Error)]
+#[derive(Debug, Clone, Error)]
 pub enum Error {
     #[error("string not terminated")]
     UnterminatedString { pos: usize },

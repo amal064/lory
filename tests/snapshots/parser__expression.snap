@@ -1,0 +1,38 @@
+---
+source: tests/parser.rs
+expression: ast
+---
+Ok(
+    BinaryOp {
+        left: BinaryOp {
+            left: Literal(
+                Number(
+                    5.0,
+                ),
+            ),
+            op: Sub,
+            right: BinaryOp {
+                left: Literal(
+                    Number(
+                        3.0,
+                    ),
+                ),
+                op: Sub,
+                right: Literal(
+                    Number(
+                        1.0,
+                    ),
+                ),
+            },
+        },
+        op: Add,
+        right: UnaryOp {
+            op: Neg,
+            expr: Literal(
+                Number(
+                    1.0,
+                ),
+            ),
+        },
+    },
+)
