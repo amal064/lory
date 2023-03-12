@@ -31,12 +31,13 @@ where
 
 macro_rules! eat_tok {
     ($self:ident, $pattern:pat) => {
-        $self.tokens.peeking_next(
-        |t: &LexerResult| match t {
-            Ok(t) => matches!(&t.kind, $pattern),
-            Err(_) => false,
-        })
-        .transpose()?
+        $self
+            .tokens
+            .peeking_next(|t: &LexerResult| match t {
+                Ok(t) => matches!(&t.kind, $pattern),
+                Err(_) => false,
+            })
+            .transpose()?
     };
 }
 
@@ -71,7 +72,8 @@ where
     fn parse_equality(&mut self) -> ParseResult {
         let mut left = self.parse_comparison()?;
 
-        while let Some(op) = eat_and_translate!(self, TokenKind::EqualEqual => BinOp::Equal, TokenKind::BangEqual => BinOp::NotEqual)
+        while let Some(op) = eat_and_translate!(self,
+            TokenKind::EqualEqual => BinOp::Equal,TokenKind::BangEqual => BinOp::NotEqual)
         {
             let right = self.parse_comparison()?;
             left = Expression::BinaryOp {
@@ -85,10 +87,10 @@ where
 
     fn parse_comparison(&mut self) -> ParseResult {
         let mut left = self.parse_term()?;
-        while let Some(op) = eat_and_translate!(self, 
-            TokenKind::Greater => BinOp::Greater, 
-            TokenKind::GreaterEqual => BinOp::GreaterEqual, 
-            TokenKind::Less => BinOp::Less, 
+        while let Some(op) = eat_and_translate!(self,
+            TokenKind::Greater => BinOp::Greater,
+            TokenKind::GreaterEqual => BinOp::GreaterEqual,
+            TokenKind::Less => BinOp::Less,
             TokenKind::LessEqual => BinOp::LessEqual)
         {
             left = Expression::BinaryOp {
@@ -102,7 +104,9 @@ where
 
     fn parse_term(&mut self) -> ParseResult {
         let mut left = self.parse_factor()?;
-        while let Some(op) = eat_and_translate!(self, TokenKind::Plus => BinOp::Add, TokenKind::Minus => BinOp::Sub) {
+        while let Some(op) =
+            eat_and_translate!(self, TokenKind::Plus => BinOp::Add, TokenKind::Minus => BinOp::Sub)
+        {
             left = Expression::BinaryOp {
                 left: Box::new(left),
                 op,
@@ -114,7 +118,9 @@ where
 
     fn parse_factor(&mut self) -> ParseResult {
         let mut left = self.parse_unary()?;
-        while let Some(op) = eat_and_translate!(self, TokenKind::Star => BinOp::Mul, TokenKind::Slash => BinOp::Div) {
+        while let Some(op) =
+            eat_and_translate!(self, TokenKind::Star => BinOp::Mul, TokenKind::Slash => BinOp::Div)
+        {
             left = Expression::BinaryOp {
                 left: Box::new(left),
                 op,
@@ -125,7 +131,8 @@ where
     }
 
     fn parse_unary(&mut self) -> ParseResult {
-        if let Some(op) = eat_and_translate!(self, TokenKind::Bang => UnaryOp::Not, TokenKind::Minus => UnaryOp::Neg) {
+        if let Some(op) = eat_and_translate!(self, TokenKind::Bang => UnaryOp::Not, TokenKind::Minus => UnaryOp::Neg)
+        {
             Ok(Expression::UnaryOp {
                 op,
                 expr: Box::new(self.parse_unary()?),
@@ -136,6 +143,7 @@ where
     }
 
     fn parse_primary(&mut self) -> ParseResult {
+        #[allow(unused_variables)]
         if let Some(l) = eat_and_translate!(self, TokenKind::Lit(l) => l) {
             return Ok(Expression::Literal(l));
         } else if eat_tok!(self, TokenKind::LeftParen).is_some() {
