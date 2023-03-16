@@ -13,7 +13,7 @@ To execute Lox programs, Lory utilizes a tree walk interpreter approach, which i
 At present, Lory is work-in-progress and is not sufficiently developed to be run as an interpreter.
 
 - [x] Scanning
-- [ ] Parsing
+- [X] Parsing
 - [ ] Tree Walk Interpreting
 - [ ] Variables
 - [ ] Control Flow
